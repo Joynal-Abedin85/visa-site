@@ -39,6 +39,18 @@ const Addvisa = () => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
     alert("Visa added successfully!");
+
+    fetch('http://localhost:4000/visa', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+    })
   };
 
   return (
@@ -54,7 +66,7 @@ const Addvisa = () => {
           name="countryImage"
           value={formData.countryImage}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full text-black border p-2 rounded"
           placeholder="Enter image URL"
           required
         />
@@ -68,7 +80,7 @@ const Addvisa = () => {
           name="countryName"
           value={formData.countryName}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full text-black border p-2 rounded"
           placeholder="Enter country name"
           required
         />
@@ -81,7 +93,7 @@ const Addvisa = () => {
           name="visaType"
           value={formData.visaType}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full text-black border p-2 rounded"
         >
           {visaTypes.map((type, index) => (
             <option key={index} value={type}>
@@ -99,7 +111,7 @@ const Addvisa = () => {
           name="processingTime"
           value={formData.processingTime}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full text-black border p-2 rounded"
           placeholder="Enter processing time (e.g., 7-10 days)"
           required
         />
@@ -116,7 +128,7 @@ const Addvisa = () => {
               value={doc}
               checked={formData.requiredDocuments.includes(doc)}
               onChange={handleChange}
-              className="mr-2"
+              className="mr-2 text-black"
             />
             <label>{doc}</label>
           </div>
@@ -130,7 +142,7 @@ const Addvisa = () => {
           name="description"
           value={formData.description}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full text-black border p-2 rounded"
           rows="4"
           placeholder="Enter description about the visa"
         />
@@ -144,7 +156,7 @@ const Addvisa = () => {
           name="ageRestriction"
           value={formData.ageRestriction}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full text-black border p-2 rounded"
           placeholder="Enter minimum age"
         />
       </div>
@@ -157,7 +169,7 @@ const Addvisa = () => {
           name="fee"
           value={formData.fee}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full text-black border p-2 rounded"
           placeholder="Enter visa fee"
           required
         />
@@ -171,7 +183,7 @@ const Addvisa = () => {
           name="validity"
           value={formData.validity}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full text-black border p-2 rounded"
           placeholder="Enter validity period (e.g., 6 months)"
           required
         />
@@ -185,7 +197,7 @@ const Addvisa = () => {
           name="applicationMethod"
           value={formData.applicationMethod}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full text-black border p-2 rounded"
           placeholder="Enter application method (e.g., Online)"
           required
         />
