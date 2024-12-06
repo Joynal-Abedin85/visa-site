@@ -5,19 +5,19 @@ const Header = () => {
   const item = (
     <>
       <li>
-        <NavLink>home</NavLink>
+        <NavLink to='/'>home</NavLink>
       </li>
       <li>
-        <NavLink>visa</NavLink>
+        <NavLink to='/allvisa'>All visa</NavLink>
       </li>
       <li>
-        <NavLink>my visa</NavLink>
+        <NavLink to='/addvisa'>add visa</NavLink>
       </li>
       <li>
-        <NavLink>add visa</NavLink>
+        <NavLink to='/myvisa'>my visa</NavLink>
       </li>
       <li>
-        <NavLink>application</NavLink>
+        <NavLink to='/application'>my visa application</NavLink>
       </li>
     </>
   );

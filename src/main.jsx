@@ -9,6 +9,9 @@ import {
 import Home from './pages/Home.jsx';
 import Addvisa from './pages/Addvisa.jsx';
 import Mainlayout from './pages/Mainlayout.jsx';
+import Allvisa from './pages/Allvisa.jsx';
+import Myvisa from './pages/Myvisa.jsx';
+import Application from './pages/Application.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,15 +19,28 @@ const router = createBrowserRouter([
     element: <Mainlayout></Mainlayout>,
     children: [
       {
-        path: '/',
+        path: '',
         element: <Home></Home>
+      },
+      {
+        path: '/addvisa',
+        element: <Addvisa></Addvisa>
+      },
+      {
+        path: '/allvisa',
+        element: <Allvisa></Allvisa>
+      },
+      {
+        path: '/myvisa',
+        element: <Myvisa></Myvisa>
+      },
+      {
+        path: '/application',
+        element: <Application></Application>
       }
     ]
   },
-  {
-    path: '/addvisa',
-    element: <Addvisa></Addvisa>
-  }
+  
 ]);
 
 createRoot(document.getElementById('root')).render(
