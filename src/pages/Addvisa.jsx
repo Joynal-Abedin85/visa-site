@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const Addvisa = () => {
   const [formData, setFormData] = useState({
@@ -38,7 +39,7 @@ const Addvisa = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
-    alert("Visa added successfully!");
+    
 
     fetch('http://localhost:4000/visa', {
       method: 'POST',
@@ -50,6 +51,16 @@ const Addvisa = () => {
     .then(res => res.json())
     .then(data => {
       console.log(data);
+      if(data.insertedId){
+        Swal.fire({
+          title: "Success!",
+          text: "Your operation was successful.",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+
+      }
+
     })
   };
 
