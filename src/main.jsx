@@ -13,6 +13,7 @@ import Allvisa from './pages/Allvisa.jsx';
 import Myvisa from './pages/Myvisa.jsx';
 import Application from './pages/Application.jsx';
 import Visadetails from './pages/Visadetails.jsx';
+import Authprovider from './component/Authprovider.jsx';
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <Authprovider>
     <RouterProvider router={router} />
+    </Authprovider>
   </StrictMode>,
 )
