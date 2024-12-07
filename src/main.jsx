@@ -14,6 +14,8 @@ import Myvisa from './pages/Myvisa.jsx';
 import Application from './pages/Application.jsx';
 import Visadetails from './pages/Visadetails.jsx';
 import Authprovider from './component/Authprovider.jsx';
+import Signin from './component/Signin.jsx';
+import Signup from './component/Signup.jsx';
 
 const router = createBrowserRouter([
   {
@@ -44,7 +46,16 @@ const router = createBrowserRouter([
       {
         path: '/application',
         element: <Application></Application>
+      },
+      {
+        path: '/signin',
+        element: <Signin></Signin>
+      },
+      {
+        path: '/signup',
+        element: <Signup></Signup>
       }
+
     ]
   },
   {
