@@ -4,7 +4,7 @@ import { Authcontext } from "./Authprovider";
 
 const Header = () => {
 
-  const {user} = useContext(Authcontext)
+  const {user,logout} = useContext(Authcontext)
   console.log(user);
   const item = (
     <>
@@ -57,10 +57,9 @@ const Header = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{item}</ul>
       </div>
-      <div className="navbar-end">
-        <NavLink to='/signin' className="btn font-bold text-teal-500 ">Sign In {user && user.email}</NavLink>
-      </div>
-      <div className="dropdown dropdown-end">
+      
+      {
+        user && user?.email ?  (<div className="dropdown dropdown-end  w-full flex justify-end">
         <div
           tabIndex={0}
           role="button"
@@ -75,22 +74,22 @@ const Header = () => {
         </div>
         <ul
           tabIndex={0}
-          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+          className="menu menu-sm dropdown-content bg-teal-500 rounded-box z-[1] mt-28 w-52 p-2 shadow"
         >
-          <li>
-            <a className="justify-between">
-              Profile
-              <span className="badge">New</span>
-            </a>
-          </li>
+          
           <li>
             <a>Settings</a>
           </li>
           <li>
-            <a>Logout</a>
+            <button onClick={logout}>Logout</button>
           </li>
         </ul>
-      </div>
+      </div>) :(<div className="navbar-end">
+        <NavLink to='/signin' className="btn font-bold text-teal-500 ">Sign In</NavLink>
+      </div>) 
+      }
+      
+      
     </div>
   );
 };
