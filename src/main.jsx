@@ -17,6 +17,7 @@ import Authprovider from './component/Authprovider.jsx';
 import Signin from './component/Signin.jsx';
 import Signup from './component/Signup.jsx';
 import Privateroute from './component/Privateroute.jsx';
+import Eror from './pages/Eror.jsx';
 
 const router = createBrowserRouter([
   {
@@ -41,18 +42,34 @@ const router = createBrowserRouter([
       },
       {
         path: '/allvisa',
-        element: <Allvisa></Allvisa>,
+        element:(
+          <Privateroute>
+            <Allvisa></Allvisa>
+
+          </Privateroute>
+        ) 
+         ,
         loader: () => fetch('http://localhost:4000/visa')
         
       },
       {
         path: '/myvisa',
-        element: <Myvisa></Myvisa>,
+        element:(
+          <Privateroute>
+            <Myvisa></Myvisa>
+
+          </Privateroute>
+        )  ,
         loader: () => fetch('http://localhost:4000/myvisa')
       },
       {
         path: '/application',
-        element: <Application></Application>,
+        element:(
+          <Privateroute>
+            <Application></Application>
+
+          </Privateroute>
+        )  ,
         loader: () => fetch('http://localhost:4000/myvisa')
       },
       {
@@ -77,6 +94,10 @@ const router = createBrowserRouter([
     element: <Visadetails></Visadetails>,
     loader: ({params}) => fetch(`http://localhost:4000/visa/${params.id}`)
 
+  },
+  {
+    path:'*',
+    element: <Eror></Eror>
   }
   
   

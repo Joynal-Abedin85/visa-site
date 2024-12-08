@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Authcontext } from "./Authprovider";
 
@@ -6,6 +6,16 @@ const Header = () => {
 
   const {user,logout} = useContext(Authcontext)
   console.log(user);
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Apply the theme to the body
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
   const item = (
     <>
       <li>
@@ -56,6 +66,16 @@ const Header = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{item}</ul>
+      </div>
+
+      <div>
+
+      <button
+        onClick={() => setDarkMode(!darkMode)}
+        className="px-4 py-2 text-white font-bold rounded-md transition duration-300 bg-teal-500 hover:bg-teal-600 dark:bg-gray-800 dark:hover:bg-gray-700"
+      >
+        {darkMode ? "Lightmode " : "Darkmode "}
+      </button>
       </div>
       
       {

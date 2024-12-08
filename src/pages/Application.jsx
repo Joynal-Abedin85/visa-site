@@ -6,7 +6,7 @@ import { FaCalendarAlt, FaDollarSign, FaUserAlt, FaEnvelope } from "react-icons/
 const Application = () => {
   const myvisa = useLoaderData();
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="px-5 dark:bg-teal-900 dark:text-white transition duration-300 py-5">
       {myvisa.map((myv) => (
         <div key='myv._id' className="bg-gradient-to-r from-teal-700 via-cyan-800 to-black text-white rounded-lg shadow-lg p-4 my-5 flex flex-col md:flex-row gap-4">
           {/* Country Image */}
