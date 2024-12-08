@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Authcontext } from "./Authprovider";
+import { NavLink } from "react-router-dom";
 
 const Signup = () => {
 
@@ -88,6 +89,12 @@ const Signup = () => {
                   Forgot password?
                 </a>
               </label>
+            </div>
+            <div className="">
+            <h2 className="font-bold">
+                if you have account 
+                <NavLink to='/signin' className="text-teal-400">--Sign in</NavLink>
+            </h2>
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">sign up</button>

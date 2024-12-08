@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { Authcontext } from './Authprovider';
+import { NavLink } from 'react-router-dom';
 
 const Signin = () => {
 
-  const {signinuser} = useContext(Authcontext)
+  const {signinuser,setuser} = useContext(Authcontext)
 
   const handlesignin= e => {
     e.preventDefault()
@@ -14,6 +15,7 @@ const Signin = () => {
     signinuser(email,password)
     .then(res => {
       console.log(res.user);
+      setuser(res.user)
       const lastSignInTime = res?.user?.metadata?.lastSignInTime;
       const loginfo = {email , lastSignInTime}
 
@@ -61,6 +63,12 @@ const Signin = () => {
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
           </label>
+        </div>
+        <div className="">
+            <h2 className="font-bold">
+                if you dont have account pls
+                <NavLink to='/signup' className="text-teal-400">--Sign up</NavLink>
+            </h2>
         </div>
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>

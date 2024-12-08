@@ -22,7 +22,8 @@ const Authprovider = ({children}) => {
         user,
         loading,
         createuser,
-        signinuser
+        signinuser,
+        setuser
     }
     return (
         <Authcontext.Provider value={userinfo}>

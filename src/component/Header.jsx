@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { Authcontext } from "./Authprovider";
 
 const Header = () => {
+
+  const {user} = useContext(Authcontext)
+  console.log(user);
   const item = (
     <>
       <li>
@@ -54,7 +58,7 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1">{item}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <NavLink to='/signin' className="btn font-bold text-teal-500 ">Sign In {user && user.email}</NavLink>
       </div>
       <div className="dropdown dropdown-end">
         <div
