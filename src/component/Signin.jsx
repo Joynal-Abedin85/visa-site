@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
 import { Authcontext } from './Authprovider';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 const Signin = () => {
 
   const {signinuser,setuser} = useContext(Authcontext)
+  
+  const location = useLocation()
+  const navigate = useNavigate()
 
   const handlesignin= e => {
     e.preventDefault()
@@ -16,6 +19,7 @@ const Signin = () => {
     .then(res => {
       console.log(res.user);
       setuser(res.user)
+      navigate(location?.state ? location.state : "/")
       const lastSignInTime = res?.user?.metadata?.lastSignInTime;
       const loginfo = {email , lastSignInTime}
 

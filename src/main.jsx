@@ -16,6 +16,7 @@ import Visadetails from './pages/Visadetails.jsx';
 import Authprovider from './component/Authprovider.jsx';
 import Signin from './component/Signin.jsx';
 import Signup from './component/Signup.jsx';
+import Privateroute from './component/Privateroute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/addvisa',
-        element: <Addvisa></Addvisa>
+        element: (
+          <Privateroute>
+            <Addvisa></Addvisa>
+
+          </Privateroute>
+        ) 
       },
       {
         path: '/allvisa',

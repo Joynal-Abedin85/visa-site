@@ -1,41 +1,62 @@
 import React, { useContext } from "react";
 import { Authcontext } from "./Authprovider";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
-const Signup = () => {
+import { updateProfile} from "firebase/auth";
+import { auth } from './firebase.init';
 
-  const {createuser} = useContext(Authcontext)
-    const handlesignup = e => {
-        e.preventDefault()
-        const email = e.target.email.value
-        const name = e.target.name.value
-        const password = e.target.password.value
-        console.log(email,password);
-        createuser(email,password)
-        .then(result => {
-          console.log(result);
 
-          const newuser = {email,name}
-          fetch('http://localhost:5000/users',{
-            method: 'POST',
-            headers: {
-              'content-type': 'application/json'
-            },
-            body: JSON.stringify(newuser)
+function Signup() {
+  const { createuser, setuser } = useContext(Authcontext);
+
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const handlesignup = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const name = e.target.name.value;
+    const password = e.target.password.value;
+    const photo = e.target.photo.value;
+    console.log(email, password);
+    createuser(email, password)
+      .then((result) => {
+        console.log(result);
+        setuser(result.user);
+        navigate(location?.state ? location.state : "/")
+
+        const profile = {
+          displayName: name,
+          photoURL: photo,
+        };
+        updateProfile(auth.currentUser, profile)
+          .then(() => {
+            console.log("res");
           })
-          .then(res => res.json())
-          .then(data => {
-            console.log('user created db is', data);
-            if(data.insertedId){
-              console.log('user created in db');
+          .catch((err) => {
+            console.log(err);
+          });
+
+        const newuser = { email, name };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newuser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("user created db is", data);
+            if (data.insertedId) {
+              console.log("user created in db");
             }
-          })
-        })
-        .catch(err => {
-          console.log(err);
-        })
-
-    }
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -49,16 +70,26 @@ const Signup = () => {
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <form className="card-body" onSubmit={handlesignup}>
-          <div className="form-control">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Photo URL</span>
+              </label>
+              <input
+                name="photo"
+                type="text"
+                placeholder="photo url"
+                className="input input-bordered"
+              />
+            </div>
+            <div className="form-control">
               <label className="label">
                 <span className="label-text">name</span>
               </label>
               <input
-              name='name'
+                name="name"
                 type="text"
                 placeholder="name"
                 className="input input-bordered"
-                
               />
             </div>
             <div className="form-control">
@@ -66,7 +97,7 @@ const Signup = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
-              name='email'
+                name="email"
                 type="email"
                 placeholder="email"
                 className="input input-bordered"
@@ -78,7 +109,7 @@ const Signup = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-              name='password'
+                name="password"
                 type="password"
                 placeholder="password"
                 className="input input-bordered"
@@ -91,10 +122,12 @@ const Signup = () => {
               </label>
             </div>
             <div className="">
-            <h2 className="font-bold">
-                if you have account 
-                <NavLink to='/signin' className="text-teal-400">--Sign in</NavLink>
-            </h2>
+              <h2 className="font-bold">
+                if you have account
+                <NavLink to="/signin" className="text-teal-400">
+                  --Sign in
+                </NavLink>
+              </h2>
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">sign up</button>
@@ -104,6 +137,6 @@ const Signup = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Signup;
