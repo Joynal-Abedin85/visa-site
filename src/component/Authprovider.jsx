@@ -1,13 +1,17 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut  } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut  } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import { auth } from './firebase.init';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 export const Authcontext = createContext()
+const googleprovider = new GoogleAuthProvider()
 
 const Authprovider = ({children}) => {
 
     const [user,setuser] = useState(null)
     const [loading , setloading] = useState(true)
+    const [data, setData] = useState([]);
+    const [error, seterror] = useState(null);
 
     const createuser = (email,password)=> {
         setloading(true)
@@ -23,6 +27,31 @@ const Authprovider = ({children}) => {
         setloading(true)
         return signOut(auth)
     }
+
+    const signingoogle = () => {
+        setloading(true)
+        return signInWithPopup(auth,googleprovider)
+    }
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/visa');
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const result = await response.json();
+        setData(result); // Store fetched data in state
+      } catch (err) {
+        seterror(err.message); // Handle errors
+      } finally {
+        setloading(false); // Ensure loading is false after fetch
+      }
+    };
+
+    fetchData();
+  }, [])
 
     useEffect(() => {
         const unsub = onAuthStateChanged(auth, (cuser)=>{
@@ -40,7 +69,9 @@ const Authprovider = ({children}) => {
         createuser,
         signinuser,
         setuser,
-        logout
+        logout,
+        signingoogle,
+        data
     }
     return (
         <Authcontext.Provider value={userinfo}>

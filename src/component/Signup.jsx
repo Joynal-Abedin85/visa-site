@@ -4,10 +4,11 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import { updateProfile} from "firebase/auth";
 import { auth } from './firebase.init';
+import { FaGoogle } from "react-icons/fa";
 
 
 function Signup() {
-  const { createuser, setuser } = useContext(Authcontext);
+  const { createuser, setuser,signingoogle } = useContext(Authcontext);
 
   const location = useLocation()
   const navigate = useNavigate()
@@ -57,6 +58,18 @@ function Signup() {
         console.log(err);
       });
   };
+
+  const handlegooglelogin = ()=>{
+    signingoogle()
+    .then(result => {
+        console.log(result.user)
+        
+        navigate(location?.state ? location.state : "/")
+    })
+    .catch((err)=> {
+        console.log(err);
+    })
+}
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -131,6 +144,9 @@ function Signup() {
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">sign up</button>
+            </div>
+            <div className="text-left mt-4">
+                    <button onClick={handlegooglelogin} className="btn text-fuchsia-500 text-2xl hover:bg-fuchsia-100 border border-fuchsia-400 hover:border-transparent  bg-white rounded-full"> <FaGoogle></FaGoogle> log in with google </button> 
             </div>
           </form>
         </div>

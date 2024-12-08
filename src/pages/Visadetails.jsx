@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Header from "../component/Header";
+import { Authcontext } from "../component/Authprovider";
 
 const Visadetails = () => {
   const visadetl = useLoaderData();
   const [showModal, setShowModal] = useState(false);
+  const {user} = useContext(Authcontext)
+  
+  console.log(user);
   const {
     countryName,
     visaType,
@@ -18,20 +22,38 @@ const Visadetails = () => {
     applicationMethod,
     _id,
   } = visadetl;
+  const [formData, setFormData] = useState({
+    email: `${user && user.email}`,
+    firstName: "",
+    lastName: "",
+    appliedDate: new Date().toISOString().split("T")[0], // Current date
+    fee: `${fee}`,
+    countryName: `${countryName}`,
+    countryImage: `${countryImage}`,
+    visaType: `${visaType}`,
+    processingTime: `${processingTime}`,
+    validity: `${validity}`,
+    applicationMethod: `${applicationMethod}`,
+
+
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Application Submitted:", formData);
     // Add your form submission logic here (e.g., send data to the server)
+    fetch('http://localhost:4000/myvisa',{
+      method: 'POST',
+      headers:{
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(res=> res.json())
+    .then(data => console.log(data))
     setShowModal(false);
   };
-  const [formData, setFormData] = useState({
-    email: "",
-    firstName: "",
-    lastName: "",
-    appliedDate: new Date().toISOString().split("T")[0], // Current date
-    fee: "",
-  });
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

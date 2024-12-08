@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { Authcontext } from './Authprovider';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { FaGoogle } from 'react-icons/fa';
 
 const Signin = () => {
 
-  const {signinuser,setuser} = useContext(Authcontext)
+  const {signinuser,setuser,signingoogle} = useContext(Authcontext)
   
   const location = useLocation()
   const navigate = useNavigate()
@@ -39,6 +40,18 @@ const Signin = () => {
       console.log(err);
     })
   }
+
+  const handlegooglelogin = ()=>{
+    signingoogle()
+    .then(result => {
+        console.log(result.user)
+        
+        navigate(location?.state ? location.state : "/")
+    })
+    .catch((err)=> {
+        console.log(err);
+    })
+}
 
 
     return (
@@ -77,6 +90,9 @@ const Signin = () => {
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>
         </div>
+        <div className="text-left mt-4">
+                    <button onClick={handlegooglelogin} className="btn text-fuchsia-500 text-2xl hover:bg-fuchsia-100 border border-fuchsia-400 hover:border-transparent  bg-white rounded-full"> <FaGoogle></FaGoogle> log in with google </button> 
+            </div>
       </form>
     </div>
   </div>

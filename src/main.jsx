@@ -47,7 +47,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/myvisa',
-        element: <Myvisa></Myvisa>
+        element: <Myvisa></Myvisa>,
+        loader: () => fetch('http://localhost:4000/myvisa')
       },
       {
         path: '/application',
@@ -66,6 +67,12 @@ const router = createBrowserRouter([
   },
   {
     path: 'visadetails/:id',
+    element: <Visadetails></Visadetails>,
+    loader: ({params}) => fetch(`http://localhost:4000/visa/${params.id}`)
+
+  },
+  {
+    path: 'allvisa/visadetails/:id',
     element: <Visadetails></Visadetails>,
     loader: ({params}) => fetch(`http://localhost:4000/visa/${params.id}`)
 

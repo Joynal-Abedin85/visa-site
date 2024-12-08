@@ -1,7 +1,8 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Latestvisa = ({visa}) => {
-    const {countryName,visaType,countryImage,processingTime,requiredDocuments,description,ageRestriction,fee,validity,applicationMethod} = visa
+    const {countryName,visaType,countryImage,processingTime,requiredDocuments,description,ageRestriction,fee,validity,applicationMethod,_id} = visa
 
     return (
         <div className=" bg-white shadow-lg rounded-lg overflow-hidden border ">
@@ -36,11 +37,14 @@ const Latestvisa = ({visa}) => {
         <p className="text-gray-600 text-sm mt-3">{description}</p>
 
         {/* See Details Button */}
-        <button
+        <button className="mt-4 w-full bg-teal-600 text-white py-2 rounded hover:bg-teal-700 transition">
+        <NavLink to={`/visadetails/${_id}`}
           
-          className="mt-4 w-full bg-teal-600 text-white py-2 rounded hover:bg-teal-700 transition"
+          
         >
           See Details
+        </NavLink>
+
         </button>
       </div>
     </div>
