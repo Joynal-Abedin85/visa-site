@@ -3,6 +3,7 @@ import Banner from '../component/Banner';
 import { useLoaderData } from 'react-router-dom';
 import Homevisa from '../component/Homevisa';
 import Extra from '../component/Extra';
+import BestVisaCustom from '../component/BestVisaCustom';
 
 const Home = () => {
     const visas = useLoaderData()
@@ -22,6 +23,7 @@ const Home = () => {
                 }
             </div>
             <Extra></Extra>
+            <BestVisaCustom></BestVisaCustom>
         </div>
     );
 };
