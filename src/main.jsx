@@ -52,7 +52,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/application',
-        element: <Application></Application>
+        element: <Application></Application>,
+        loader: () => fetch('http://localhost:4000/myvisa')
       },
       {
         path: '/signin',
