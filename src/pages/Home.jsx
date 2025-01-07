@@ -4,6 +4,10 @@ import { useLoaderData } from 'react-router-dom';
 import Homevisa from '../component/Homevisa';
 import Extra from '../component/Extra';
 import BestVisaCustom from '../component/BestVisaCustom';
+import Blog from '../ejpupdate/Blog';
+import Promotional from '../ejpupdate/Promotional';
+import Offer from '../ejpupdate/Offer';
+import Newslatter from '../ejpupdate/Newslatter';
 
 const Home = () => {
     const visas = useLoaderData()
@@ -24,6 +28,10 @@ const Home = () => {
             </div>
             <Extra></Extra>
             <BestVisaCustom></BestVisaCustom>
+            <Blog></Blog>
+            <Promotional></Promotional>
+            <Offer></Offer>
+            <Newslatter></Newslatter>
         </div>
     );
 };

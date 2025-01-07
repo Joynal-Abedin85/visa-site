@@ -14,7 +14,7 @@ const BestVisaCustom = () => {
         {/* Card 1 - USA */}
         <div className="bg-gradient-to-r from-teal-700 via-cyan-800 to-black text-white rounded-lg shadow-lg overflow-hidden">
           <img
-            src="https://via.placeholder.com/300x200?text=USA"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyAG3oWLpn6t7aDIWwpehQDgahnRj4ywuuOg&s"
             alt="USA"
             className="w-full h-40 object-cover"
           />
@@ -53,7 +53,7 @@ const BestVisaCustom = () => {
         {/* Card 2 - Canada */}
         <div className="bg-gradient-to-r from-teal-700 via-cyan-800 to-black text-white rounded-lg shadow-lg overflow-hidden">
           <img
-            src="https://via.placeholder.com/300x200?text=Canada"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXAHkN73zEQBzRVVMQlG4gK8v9fs5lk2ASbg&s"
             alt="Canada"
             className="w-full h-40 object-cover"
           />
@@ -92,7 +92,7 @@ const BestVisaCustom = () => {
         {/* Card 3 - Australia */}
         <div className="bg-gradient-to-r from-teal-700 via-cyan-800 to-black text-white rounded-lg shadow-lg overflow-hidden">
           <img
-            src="https://via.placeholder.com/300x200?text=Australia"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHTGP9_JwxTLjNvf4b5DuxrmAQtx7ETlAepA&s"
             alt="Australia"
             className="w-full h-40 object-cover"
           />
@@ -131,7 +131,7 @@ const BestVisaCustom = () => {
         {/* Card 4 - UK */}
         <div className="bg-gradient-to-r from-teal-700 via-cyan-800 to-black text-white rounded-lg shadow-lg overflow-hidden">
           <img
-            src="https://via.placeholder.com/300x200?text=UK"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWosWzXmNnQNgkFtm7BgFpbWKHYSYBwrUhqA&s"
             alt="UK"
             className="w-full h-40 object-cover"
           />

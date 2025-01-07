@@ -42,7 +42,7 @@ const Visadetails = () => {
     e.preventDefault();
     console.log("Application Submitted:", formData);
     // Add your form submission logic here (e.g., send data to the server)
-    fetch('http://localhost:4000/myvisa',{
+    fetch('https://visa-sites.vercel.app/myvisa',{
       method: 'POST',
       headers:{
         'content-type': 'application/json'

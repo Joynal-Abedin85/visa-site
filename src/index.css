@@ -11,3 +11,7 @@ body.light-mode {
     background-color: #121212;
     color: #ffffff;
   }
+
+  .menu li > *:not(ul, .menu-title, details, .btn):active, .menu li > *:not(ul, .menu-title, details, .btn).active, .menu li > details > summary:active {
+    color: aqua;
+}

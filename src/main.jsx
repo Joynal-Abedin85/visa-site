@@ -18,6 +18,7 @@ import Signin from './component/Signin.jsx';
 import Signup from './component/Signup.jsx';
 import Privateroute from './component/Privateroute.jsx';
 import Eror from './pages/Eror.jsx';
+import Support from './pages/Support.jsx';
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
       {
         path: '',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:4000/visa')
+        loader: () => fetch('https://visa-sites.vercel.app/visa')
 
       },
       {
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
           </Privateroute>
         ) 
          ,
-        loader: () => fetch('http://localhost:4000/visa')
+        loader: () => fetch('https://visa-sites.vercel.app/visa')
         
       },
       {
@@ -60,7 +61,7 @@ const router = createBrowserRouter([
 
           </Privateroute>
         )  ,
-        loader: () => fetch('http://localhost:4000/myvisa')
+        loader: () => fetch('https://visa-sites.vercel.app/myvisa')
       },
       {
         path: '/application',
@@ -70,7 +71,7 @@ const router = createBrowserRouter([
 
           </Privateroute>
         )  ,
-        loader: () => fetch('http://localhost:4000/myvisa')
+        loader: () => fetch('https://visa-sites.vercel.app/myvisa')
       },
       {
         path: '/signin',
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: '/signup',
         element: <Signup></Signup>
+      },
+      {
+        path: '/support',
+        element: <Support></Support>
       }
 
     ]
@@ -86,13 +91,13 @@ const router = createBrowserRouter([
   {
     path: 'visadetails/:id',
     element: <Visadetails></Visadetails>,
-    loader: ({params}) => fetch(`http://localhost:4000/visa/${params.id}`)
+    loader: ({params}) => fetch(`https://visa-sites.vercel.app/visa/${params.id}`)
 
   },
   {
     path: 'allvisa/visadetails/:id',
     element: <Visadetails></Visadetails>,
-    loader: ({params}) => fetch(`http://localhost:4000/visa/${params.id}`)
+    loader: ({params}) => fetch(`https://visa-sites.vercel.app/visa/${params.id}`)
 
   },
   {

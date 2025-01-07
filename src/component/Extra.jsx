@@ -93,9 +93,6 @@ const Extra = () => {
               Have questions or need assistance? Contact us and we’ll guide you through the entire visa
               application process.
             </p>
-            <button className="bg-teal-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-teal-600 transition duration-300">
-              Contact Us
-            </button>
           </Fade>
         </div>
       </div>

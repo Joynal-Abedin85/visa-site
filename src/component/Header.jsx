@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Authcontext } from "./Authprovider";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const Header = () => {
 
@@ -32,6 +33,9 @@ const Header = () => {
       </li>
       <li>
         <NavLink to='/application'>my visa application</NavLink>
+      </li>
+      <li>
+        <NavLink to='/support'>support and contect</NavLink>
       </li>
     </>
   );
@@ -74,7 +78,7 @@ const Header = () => {
         onClick={() => setDarkMode(!darkMode)}
         className="px-4 py-2 text-white font-bold rounded-md transition duration-300 bg-teal-500 hover:bg-teal-600 dark:bg-gray-800 dark:hover:bg-gray-700"
       >
-        {darkMode ? "Lightmode " : "Darkmode "}
+        {darkMode ? <FaSun className="text-amber-500"></FaSun> : <FaMoon className="text-black "></FaMoon>}
       </button>
       </div>
       

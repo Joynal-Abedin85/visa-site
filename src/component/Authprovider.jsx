@@ -37,7 +37,7 @@ const Authprovider = ({children}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/myvisa/${_id}`);
+        const response = await fetch(`https://visa-sites.vercel.app/myvisa/${_id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }

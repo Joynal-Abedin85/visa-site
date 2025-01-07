@@ -49,7 +49,7 @@ const Myvisa = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:4000/myvisa/${_id}`, {
+        fetch(`https://visa-sites.vercel.app/myvisa/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
