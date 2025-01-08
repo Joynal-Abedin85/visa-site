@@ -16,9 +16,7 @@ visa store
 
 # live link
 
-# website name 
-
-https://visa-page.web.app/
+(https://phenomenal-hotteok-e51483.netlify.app/)
 
 
 # this website 
