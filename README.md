@@ -34,7 +34,7 @@
 <h2>🛠️ How to Run Locally</h2>
 <ol>
     <li><strong>Clone the Repository</strong>
-        <pre><code>git clone https://github.com/yourusername/tech-hunt.git
+        <pre><code>git clone https://github.com/yourusername/Visa-site.git
 
 <h2>🌍 Live Link</h2>
-<p><a href="https://tech-hunt-edc5f.web.app/">Tech Hunt Live Demo</a> </p>
+<p><a href="https://job-visa-hub.netlify.app/">Visa Store Live Demo</a> </p>
